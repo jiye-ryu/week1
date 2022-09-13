@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>노래하는 소라고둥</title>
+	<style type="text/css">
+		body,header, section,div{margin: 0;}
+		section {margin: auto;}
+		.shell {position: relative; left: 200px; top: 400px; width: 600px;}
+		.coast {position:relative;left: 750px; top: 20px;}
+		.size{width: 300px;}
+		.bg{width: 1200px; height: 800px; margin: auto; margin-top:100px; margin-bottom: 100px; background-image: url(beach.jpg); background-size: cover;}
+		img{width: 100%;}
+		button{width: 60px; height: 25px; background: blue; border-style: none; border-radius: 100px; color: white;font-family: 'Noto Sans KR', sans-serif; padding-bottom: 4px;}
+		button:hover{background: white; color: blue;}
+#shell1{animation: shake 2.5s cubic-bezier(.36,.07,.19,.97) infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  2.5%, 22.5% {transform: translate3d(-1px, 0, 0);}
+  5%, 20% {transform: translate3d(2px, 0, 0);}
+  7.5%, 12.5%, 17.5% {transform: translate3d(-4px, 0, 0);}
+  10%, 15% {transform: translate3d(4px, 0, 0);}
+}
+	</style>
+</head>
+<body>
+	<header>
+	<section class="bg">
+		<div class="shell"><div class="size"><img id="shell1" src="shell.png"></div>
+		<audio id="musicSnd" src="forsure.mp3"></audio></div>
+		<div class="coast">
+		<input id="vol2" type="range" max="100" min="0" value="100" >
+		<button id="coastBut">play</button>
+		<audio id="coastSnd" src="coast.flac"></audio>
+		<button id="stop2But">stop</button></div>
+	</section>
+	</header>
+
+	<script type="text/javascript">
+		vol2.value = 100
+		vol2.oninput = function(){
+			coastSnd.volume = vol2.value / 100;
+		}
+		coastBut.onclick = function(){
+			coastSnd.play();
+		}
+		stop2But.onclick = function(){
+			coastSnd.pause();
+		}
+
+		var state = false;
+
+		shell1.onclick = function(){
+			if(!state){shell1.src = "shell2.png";
+			state = true;
+			musicSnd.play();}
+			else{shell1.src = "shell.png";
+			state = false;
+			musicSnd.pause();}
+		}
+	</script>
+</body>
+</html>
